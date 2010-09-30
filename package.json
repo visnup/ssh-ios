@@ -1,0 +1,22 @@
+{
+  "name":         "sshjs",
+  "description":  "ssh for ios via websockets and node.js",
+  "author":       "Fortnight Labs, LLC",
+  "version":      "0.0.1",
+  "licenses": [{
+    "type":       "MIT",
+    "url":        "http://opensource.org/licenses/mit-license.php"
+  }],
+  "engines": {
+    "node":       ">=0.2.2"
+  },
+  "dependencies": {
+    "nodeunit-dsl":    ">=0.0.2",
+    "express":         ">=1.0.0rc",
+    "socket.io":       ">=0.5.3",
+    "restartr":        ">=0.1.8",
+    "jade":            ">=0.5.0",
+    "sass":            ">=0.4.3"
+  },
+  "main": "./server.js"
+}
