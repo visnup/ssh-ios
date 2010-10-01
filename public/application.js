@@ -14,6 +14,7 @@ $(function() {
     for (var i = 0; i < spans; i++)
       data += '</span>';
     $stdout.append(data);
+    $(window).scrollTo($('input'));
   });
   socket.connect();
 
