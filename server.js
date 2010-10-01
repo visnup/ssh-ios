@@ -16,8 +16,10 @@ app.get('/', function(req, res) {
 var socket = io.listen(app);
 socket.on('connection', function(client) {
   var spawn = require('child_process').spawn,
-      ssh = spawn('ssh', ['-t', '-t', 'theglamourist.com']);
+      ssh = spawn('ssh', ['-t', '-t', 'theglamourist.com']),
+      running = true;
 
+  ssh.on('exit', function() { running = false; });
   ssh.stderr.on('data', function(data) { client.send(data); });
   ssh.stdout.on('data', function(data) { client.send(data); });
 
@@ -27,7 +29,7 @@ socket.on('connection', function(client) {
   });
 
   client.on('disconnect', function() {
-    ssh.kill();
+    if (running) ssh.kill();
   });
 });
 
