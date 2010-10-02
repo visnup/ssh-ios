@@ -1,9 +1,10 @@
 var express = require('express'),
     io = require('socket.io'),
+    pub = __dirname + '/public',
 
 app = express.createServer(
   express.compiler({ src: pub, enable: ['sass'] }),
-  express.staticProvider(__dirname + '/public'),
+  express.staticProvider(pub),
   express.logger(),
   express.errorHandler({ dumpExceptions: true, showStack: true })
 ),
@@ -12,7 +13,7 @@ socket = io.listen(app);
 
 socket.on('connection', function(client) {
   var spawn = require('child_process').spawn,
-      ssh = spawn('ssh', ['-t', '-t', 'theglamourist.com']),
+      ssh = spawn('ssh', ['-t', '-t', 'pinkyurl.com']),
       running = true;
 
   ssh.on('exit', function() { running = false; });
