@@ -21,6 +21,7 @@ socket.on('connection', function(client) {
   ssh.stdout.on('data', function(data) { client.send(data); });
 
   client.on('message', function(data) {
+    if (!running) return;
     if (data === '\r') data = '\n';
     ssh.stdin.write(data);
   });
