@@ -1,19 +1,15 @@
 var express = require('express'),
     io = require('socket.io'),
-    pub = __dirname + '/public';
 
-var app = express.createServer(
+app = express.createServer(
   express.compiler({ src: pub, enable: ['sass'] }),
-  express.staticProvider(pub),
+  express.staticProvider(__dirname + '/public'),
   express.logger(),
   express.errorHandler({ dumpExceptions: true, showStack: true })
-);
+),
 
-app.get('/', function(req, res) {
-  res.render('index.jade');
-});
+socket = io.listen(app);
 
-var socket = io.listen(app);
 socket.on('connection', function(client) {
   var spawn = require('child_process').spawn,
       ssh = spawn('ssh', ['-t', '-t', 'theglamourist.com']),
@@ -31,6 +27,10 @@ socket.on('connection', function(client) {
   client.on('disconnect', function() {
     if (running) ssh.kill();
   });
+});
+
+app.get('/', function(req, res) {
+  res.render('index.jade');
 });
 
 app.listen(process.env.PORT || 8000);
