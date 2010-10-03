@@ -13,21 +13,24 @@ socket = io.listen(app);
 
 socket.on('connection', function(client) {
   var spawn = require('child_process').spawn,
-      ssh = spawn('ssh', ['-t', '-t', 'pinkyurl.com']),
-      running = true;
-
-  ssh.on('exit', function() { running = false; });
-  ssh.stderr.on('data', function(data) { client.send(data); });
-  ssh.stdout.on('data', function(data) { client.send(data); });
+      ssh = null;
 
   client.on('message', function(data) {
-    if (!running) return;
-    if (data === '\r') data = '\n';
-    ssh.stdin.write(data);
+    if (!ssh) {
+      var params = require('querystring').parse(data);
+      ssh = spawn('ssh', ['-t', '-t', params.server]);
+      ssh.on('exit', function() { ssh = null; });
+      ssh.stderr.on('data', function(data) { client.send(data); });
+      ssh.stdout.on('data', function(data) { client.send(data); });
+    } else {
+      if (data === '\r') data = '\n';
+      ssh.stdin.write(data);
+    }
   });
 
   client.on('disconnect', function() {
-    if (running) ssh.kill();
+    if (ssh) ssh.kill();
+    ssh = null;
   });
 });
 

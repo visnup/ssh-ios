@@ -2,6 +2,12 @@
 html( lang: "en" )
   head
     title ssh.js - ssh over websockets for iOS
-    meta( name: "viewport", content: "initial-scale=0.5,user-scalable=no" )
-    link( rel: "stylesheet", type: "text/css", href: "/application.css" )
-  body!= body
+    meta( name: "viewport", content: "user-scalable=no" )
+    link( rel: "stylesheet", type: "text/css", href: "/stylesheets/application.css" )
+  body
+    != body
+    script( src: 'http://code.jquery.com/jquery.min.js', type: 'text/javascript' )
+    script( src: 'http://cdn.socket.io/stable/socket.io.js', type: 'text/javascript' )
+    script( src: '/javascripts/jquery.scrollTo-1.4.2-min.js', type: 'text/javascript' )
+    script( src: '/javascripts/ansi.js', type: 'text/javascript' )
+    script( src: '/javascripts/application.js', type: 'text/javascript' )

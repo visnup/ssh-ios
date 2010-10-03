@@ -1,12 +1,23 @@
+body, input
+  :font 10pt courier new, monospace
+
 body
-  :background-color black
   :color white
-  :font-family menlo, monospace
+  :background-color black
 
 #stdout
   :display inline
 
-input
+input[type=submit], button
+  :color white
+  :text-shadow 0px -1px 0px hsla(0, 0%, 0%, 0.1)
+  :border solid 1px hsla(0, 0%, 0%, 0.1)
+  :border-radius 3px
+  :background hsl(190, 80%, 50%) -webkit-gradient(linear, left top, left bottom, from(hsla(0, 100%, 100%, 0.8)), to(hsla(0, 0%, 80%, 0.8)))
+input[type=submit]:active, button:active
+  :background hsl(190, 80%, 50%) -webkit-gradient(linear, left bottom, left top, from(hsla(0, 100%, 100%, 0.8)), to(hsla(0, 0%, 80%, 0.8)))
+
+input#prompt
   :color white
   :background-color transparent
   :border none

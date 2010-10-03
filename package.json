@@ -1,5 +1,5 @@
 {
-  "name":         "sshjs",
+  "name":         "ssh-ios",
   "description":  "ssh for ios via websockets and node.js",
   "author":       "Fortnight Labs, LLC",
   "version":      "0.0.1",
