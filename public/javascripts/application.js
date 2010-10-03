@@ -10,7 +10,7 @@ $(function() {
     })
     .on('message', function(data) {
       $stdout.append($.ansi.colorize(data));
-      $window.scrollTo($prompt);
+      $window.uncover($prompt);
     })
     .connect();
 
