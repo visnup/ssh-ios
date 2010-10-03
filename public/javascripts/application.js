@@ -21,9 +21,7 @@ $(function() {
       $prompt.focus();
       return false;
     })
-    .click(function(e) {
-      e.stopPropagation();
-    });
+    .click(function(e) { e.stopPropagation(); });
 
   $prompt.keypress(function(e) {
     socket.send(String.fromCharCode(e.which));

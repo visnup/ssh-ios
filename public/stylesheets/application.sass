@@ -3,19 +3,32 @@ body, input
 
 body
   :color white
-  :background-color black
+  :background #000 -webkit-gradient(radial, center 10%, 20, center center, 500, from(hsla(190, 80%, 70%, 0.2)), to(hsla(0, 0%, 0%, 0.2)))
+  :min-height 800px
+  :text-align center
+
+#page
+  :width 80ex
+  :text-align left
+  :margin 0px auto
+  :padding 20px
+  :background-color hsla(0, 0%, 0%, 0.8)
+  :-webkit-box-shadow 0px 0px 5px hsla(190, 80%, 50%, 0.5)
+
+form
+  input
+    :padding 5px
+  input[type=submit], button
+    :color white
+    :text-shadow 0px -1px 0px hsla(0, 0%, 0%, 0.1)
+    :border solid 1px hsla(0, 0%, 0%, 0.1)
+    :border-radius 3px
+    :background hsl(190, 80%, 50%) -webkit-gradient(linear, left top, left bottom, from(hsla(0, 0%, 100%, 0.8)), to(hsla(0, 0%, 80%, 0.8)))
+  input[type=submit]:active, button:active
+    :background hsl(190, 80%, 50%) -webkit-gradient(linear, left bottom, left top, from(hsla(0, 0%, 100%, 0.8)), to(hsla(0, 0%, 80%, 0.8)))
 
 #stdout
   :display inline
-
-input[type=submit], button
-  :color white
-  :text-shadow 0px -1px 0px hsla(0, 0%, 0%, 0.1)
-  :border solid 1px hsla(0, 0%, 0%, 0.1)
-  :border-radius 3px
-  :background hsl(190, 80%, 50%) -webkit-gradient(linear, left top, left bottom, from(hsla(0, 100%, 100%, 0.8)), to(hsla(0, 0%, 80%, 0.8)))
-input[type=submit]:active, button:active
-  :background hsl(190, 80%, 50%) -webkit-gradient(linear, left bottom, left top, from(hsla(0, 100%, 100%, 0.8)), to(hsla(0, 0%, 80%, 0.8)))
 
 input#prompt
   :color white
