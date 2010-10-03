@@ -24,8 +24,8 @@ form
     :border solid 1px hsla(0, 0%, 0%, 0.1)
     :border-radius 3px
     :background hsl(190, 80%, 50%) -webkit-gradient(linear, left top, left bottom, from(hsla(0, 0%, 100%, 0.8)), to(hsla(0, 0%, 80%, 0.8)))
-  input[type=submit]:active, button:active
-    :background hsl(190, 80%, 50%) -webkit-gradient(linear, left bottom, left top, from(hsla(0, 0%, 100%, 0.8)), to(hsla(0, 0%, 80%, 0.8)))
+    &:active
+      :background hsl(190, 80%, 50%) -webkit-gradient(linear, left bottom, left top, from(hsla(0, 0%, 100%, 0.8)), to(hsla(0, 0%, 80%, 0.8)))
 
 #stdout
   :display inline
@@ -58,9 +58,9 @@ span
     :color magenta
   &.e36
     :color cyan
-  &.e37, &.39
+  &.e37, &.e39
     :color white
-  &.e40, &.49
+  &.e40, &.e49
     :background-color black
   &.e41
     :background-color red

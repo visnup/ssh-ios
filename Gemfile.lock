@@ -1,0 +1,9 @@
+GEM
+  specs:
+    haml (3.0.21)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  haml
