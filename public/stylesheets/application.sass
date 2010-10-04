@@ -4,7 +4,7 @@ body, input
 body
   :color white
   :background #000 -webkit-gradient(radial, center 10%, 20, center center, 500, from(hsla(190, 80%, 70%, 0.2)), to(hsla(0, 0%, 0%, 0.2)))
-  :min-height 800px
+  :min-height 200px
   :text-align center
 
 #page
@@ -41,38 +41,51 @@ input#prompt
   :margin 0px
 
 span
-  &.e0, &.e00
+  &.m0
     :color white
     :background-color black
-  &.e30
+    :font-weight normal
+    :font-style none
+    :text-decoration none
+  &.m1
+    :font-weight bold
+  &.m3
+    :font-style italic
+  &.m4
+    :text-decoration underline
+  &.m9
+    :text-decoration line-through
+  &.m30
     :color black
-  &.e31
+    &.m1
+      :color gray
+  &.m31
     :color red
-  &.e32
+  &.m32
     :color green
-  &.e33
+  &.m33
     :color yellow
-  &.e34
+  &.m34
     :color blue
-  &.e35
+  &.m35
     :color magenta
-  &.e36
+  &.m36
     :color cyan
-  &.e37, &.e39
+  &.m37, &.m39
     :color white
-  &.e40, &.e49
+  &.m40, &.m49
     :background-color black
-  &.e41
+  &.m41
     :background-color red
-  &.e42
+  &.m42
     :background-color green
-  &.e43
+  &.m43
     :background-color yellow
-  &.e44
+  &.m44
     :background-color blue
-  &.e45
+  &.m45
     :background-color magenta
-  &.e46
+  &.m46
     :background-color cyan
-  &.e47
+  &.m47
     :background-color white

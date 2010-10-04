@@ -1,30 +1,29 @@
-(function($, window, document, undefined) {
-  var xterm = new RegExp('\033][0-9];(.*?)\007', 'g'),
-      esc = new RegExp('\033\\[([0-9;]*?m)', 'g');
-
-  var debug = function(s) {
-    console.log(s.split('').map(function(c) {
-      return c + ' (' + c.charCodeAt(0) + ')';
-    }));
-  };
+(function($, undefined) {
+  var xterm = new RegExp('\x1b][0-9];(.*?)\x07', 'g'),
+      ansi_csi = new RegExp('\x1b\\[([0-9;]*?)([A-Za-z])', 'g');
 
   $.ansi = {
     colorize: function(data) {
       var spans = 0;
-      debug(data);
       data = $('<div>').text(data).html()
-        .replace(xterm, function(m, p1) {
-          $('title').text(p1);
+        .replace(xterm, function(m, s) {
+          $('title').text(s);
           return '';
         })
-        .replace(esc, function(m, p1) {
-          spans++;
-          return '<span class="e' + p1.replace(/[;m]/g, ' e') + '">';
+        .replace(ansi_csi, function(m, n, cmd) {
+          console.log('CSI ' + n + ' ' + cmd);
+          switch (cmd) {
+            case 'm':
+              ns = (n || '00').split(';').map(function(n) { return 'm' + Number(n); });
+              spans++;
+              return '<span class="' + ns.join(' ') + '">';
+            default:
+              return '';
+          }
         });
-      for (var i = 0; i < spans; i++)
-        data += '</span>';
+      console.log(data);
 
       return data;
     }
   };
-})(jQuery, window, document);
+})(jQuery);
