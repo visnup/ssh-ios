@@ -38,6 +38,21 @@ $(function() {
         socket.send(String.fromCharCode(e.which));
         //console.log("d: sent");
         return false;
+      } else {
+        switch (e.which) {
+          case 37: // left
+            socket.send('\033[D');
+            return false;
+          case 38: // up
+            socket.send('\033[A');
+            return false;
+          case 39: // right
+            socket.send('\033[C');
+            return false;
+          case 40: // down
+            socket.send('\033[B');
+            return false;
+        }
       }
     });
 
