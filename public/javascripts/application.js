@@ -9,8 +9,7 @@ $(function() {
       transports: ['websocket', 'htmlfile', 'xhr-multipart', 'xhr-polling']
     })
     .on('message', function(data) {
-      console.log('r: ' + data);
-      $stdout.append($.ansi.colorize(data));
+      $stdout.ansi(data);
       $window.uncover($prompt);
     })
     .connect();
