@@ -3,9 +3,8 @@
       esc = new RegExp('\033\\[([0-9;]*?m)', 'g');
 
   var debug = function(s) {
-    return;
     console.log(s.split('').map(function(c) {
-      return c + '=' + c.charCodeAt(0);
+      return c + ' (' + c.charCodeAt(0) + ')';
     }));
   };
 
@@ -14,7 +13,7 @@
       var spans = 0;
       debug(data);
       data = $('<div>').text(data).html()
-      .replace(xterm, function(m, p1) {
+        .replace(xterm, function(m, p1) {
           $('title').text(p1);
           return '';
         })

@@ -23,10 +23,27 @@ $(function() {
     })
     .click(function(e) { e.stopPropagation(); });
 
-  $prompt.keypress(function(e) {
-    socket.send(String.fromCharCode(e.which));
-    return false;
-  });
+  $prompt
+    .keypress(function(e) {
+      socket.send(String.fromCharCode(e.which));
+      console.log("p: " + e.which + ' (' + String.fromCharCode(e.which) + ')');
+      return false;
+    })
+    .keydown(function(e) {
+      console.log("d: " + e.which + ' (' + String.fromCharCode(e.which) + ')');
+      //console.log(e);
+      if (e.ctrlKey && e.which >= 64) {
+        socket.send(String.fromCharCode(e.which - 64));
+        return false;
+      } else {
+        switch(e.which) {
+          case 8:
+          case 9:
+            socket.send(String.fromCharCode(e.which));
+            return false;
+        }
+      }
+    });
 
   $(document).click(function() {
     $prompt.focus();
