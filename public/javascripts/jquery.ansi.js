@@ -43,6 +43,8 @@
           $('title').text(re.xterm.exec(esc)[1]);
           esc = null;
         }
+      } else if (c === '\r') {
+        // ignore ?
       } else if (c === '\n') {
         buf.push(buf.line = []);
         buf.cursor = 0;
